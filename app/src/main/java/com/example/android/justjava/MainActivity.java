@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+
     /**
      * This method is called when the order button is clicked.
      */
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         //String priceMessage = "Total = $" + price + "\nThank you!";
         displayMessage(priceMessage);
     }
+    
 
     private String createOrderSummary(int price) {
 
