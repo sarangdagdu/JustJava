@@ -7,4 +7,5 @@
     <string name="Add">+</string>
     <string name="Minus">-</string>
     <string name="order_summary">Order Summary</string>
+    <string name="toppings">Toppings</string>
 </resources>
