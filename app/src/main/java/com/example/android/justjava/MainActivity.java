@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
 
 /**
  * This app displays an order form to order coffee.
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java Order for " + customerName);
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.order_summary_email_subject,customerName));
         intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
 
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -57,14 +59,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private String createOrderSummary(int price, boolean needWhippedCream, boolean needChocolate, String Customer) {
+    private String createOrderSummary(int price, boolean needWhippedCream, boolean needChocolate, String customer) {
 
-        return "Name: " + Customer +
-                "\nAdd whipped Cream?" + needWhippedCream +
-                "\nAdd Chocolate?" + needChocolate +
-                "\nQuantity : " + quantity +
-                "\nTotal : $" + price +
-                "\nThank you!";
+        return getString(R.string.order_summary_name,customer) +
+                "\n" + getString(R.string.order_summary_whipped_cream,needWhippedCream) +
+                "\n" + getString(R.string.order_summary_chocolate,needChocolate) +
+                "\n" + getString(R.string.order_summary_quantity,quantity) +
+                "\n" + getString(R.string.total) +": " +Currency.getInstance(Locale.getDefault()).getSymbol() + price;
     }
 
     /**
